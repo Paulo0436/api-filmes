@@ -1,16 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { register, login } = require('../controllers/authController');
-const { registerValidation, loginValidation } = require('../validators/authValidator');
-const { validationResult } = require('express-validator');
+const authController = require('../controllers/authController');
 
-const handleValidation = (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) return res.status(422).json({ errors: errors.array() });
-  next();
-};
+// Rota de registro
+router.post('/register', authController.registrarUsuario);
 
-router.post('/register', registerValidation, handleValidation, register);
-router.post('/login', loginValidation, handleValidation, login);
+// Rota de login
+router.post('/login', authController.loginUsuario);
 
 module.exports = router;
+
