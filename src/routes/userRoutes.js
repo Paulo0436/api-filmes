@@ -1,17 +1,25 @@
 const express = require('express');
 const router = express.Router();
+
 const userController = require('../controllers/userController');
+const authMiddleware = require('../middleware/authMiddleware');
 
-// Buscar todos os usuários
-router.get('/', userController.listarUsuarios);
+// Rotas protegidas (exigem token)
 
-// Buscar usuário por ID
-router.get('/:id', userController.buscarUsuarioPorId);
+// Listar Usuários
+router.get('/', authMiddleware, userController.listarUsuarios);
 
-// Atualizar usuário
-router.put('/:id', userController.atualizarUsuario);
+// Buscar um usuário por ID
+router.get('/:id', authMiddleware, userController.buscarUsuarioPorId);
 
-// Deletar usuário
-router.delete('/:id', userController.deletarUsuario);
+// Criar Usuário
+router.post('/', authMiddleware, userController.criarUsuario);
+
+// Atualizar Usuário
+router.put('/:id', authMiddleware, userController.atualizarUsuario);
+
+// Deletar Usuário
+router.delete('/:id', authMiddleware, userController.deletarUsuario);
 
 module.exports = router;
+
