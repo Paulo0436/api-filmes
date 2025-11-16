@@ -8,7 +8,9 @@ const connectDB = require('./src/config/database');
 
 // Rotas
 const authRoutes = require('./src/routes/authRoutes');
-const apiRoutes = require('./src/routes');
+const userRoutes = require('./src/routes/userRoutes');
+const movieRoutes = require('./src/routes/movieRoutes');
+
 
 connectDB();
 
