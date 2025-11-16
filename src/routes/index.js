@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const movieRoutes = require('./movieRoutes');
 
-// Aqui futuramente:
-// router.use('/filmes', require('./filmes.routes'));
 
 router.get('/', (req, res) => {
-  res.json({ message: 'API Filmes v1 funcionando!' });
+  res.json({
+    status: 'OK',
+    message: 'API Filmes v1 funcionando!',
+    version: '1.0.0'
+  });
 });
 
+router.use('/movies', movieRoutes);
+
 module.exports = router;
+
