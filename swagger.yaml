@@ -17,26 +17,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UserRegister"
+              $ref: '#/components/schemas/UserRegister'
       responses:
-        "201":
+        '201':
           description: Usuário registrado com sucesso
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AuthSuccess"
-        "400":
+                $ref: '#/components/schemas/AuthSuccess'
+        '400':
           description: Dados inválidos ou usuário já existe
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "500":
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
           description: Erro interno ao registrar usuário
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 
   /auth/login:
     post:
@@ -47,26 +47,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UserLogin"
+              $ref: '#/components/schemas/UserLogin'
       responses:
-        "200":
+        '200':
           description: Login bem sucedido
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AuthSuccess"
-        "401":
+                $ref: '#/components/schemas/AuthSuccess'
+        '401':
           description: Credenciais inválidas
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "500":
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
           description: Erro no login
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 
   /users:
     get:
@@ -75,24 +75,24 @@ paths:
       security:
         - BearerAuth: []
       responses:
-        "200":
+        '200':
           description: Lista de usuários retornada com sucesso
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UserList"
-        "401":
+                $ref: '#/components/schemas/UserList'
+        '401':
           description: Token ausente ou inválido
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "500":
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
           description: Erro ao buscar usuários
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 
   /users/{id}:
     get:
@@ -107,30 +107,30 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Usuário encontrado
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
-        "400":
+                $ref: '#/components/schemas/User'
+        '400':
           description: ID inválido
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "404":
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
           description: Usuário não encontrado
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "500":
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
           description: Erro ao buscar usuário
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 
     put:
       summary: Atualizar usuário
@@ -147,32 +147,32 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UserUpdate"
+              $ref: '#/components/schemas/UserUpdate'
       responses:
-        "200":
+        '200':
           description: Usuário atualizado com sucesso
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
-        "400":
+                $ref: '#/components/schemas/User'
+        '400':
           description: ID inválido ou dados inválidos
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "404":
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
           description: Usuário não encontrado
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "500":
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
           description: Erro ao atualizar usuário
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 
     delete:
       summary: Deletar usuário
@@ -186,48 +186,48 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Usuário deletado com sucesso
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DeleteSuccess"
-        "400":
+                $ref: '#/components/schemas/DeleteSuccess'
+        '400':
           description: ID inválido
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "404":
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
           description: Usuário não encontrado
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "500":
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
           description: Erro ao deletar usuário
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 
   /movies:
     get:
       summary: Listar filmes
       tags: [Filmes]
       responses:
-        "200":
+        '200':
           description: Lista de filmes retornada
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MovieList"
-        "500":
+                $ref: '#/components/schemas/MovieList'
+        '500':
           description: Erro ao buscar filmes
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 
     post:
       summary: Criar novo filme
@@ -237,26 +237,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/MovieCreate"
+              $ref: '#/components/schemas/MovieCreate'
       responses:
-        "201":
+        '201':
           description: Filme criado com sucesso
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Movie"
-        "400":
+                $ref: '#/components/schemas/Movie'
+        '400':
           description: Dados inválidos
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "500":
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
           description: Erro ao criar filme
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 
   /movies/{id}:
     get:
@@ -269,30 +269,30 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Filme encontrado
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Movie"
-        "400":
+                $ref: '#/components/schemas/Movie'
+        '400':
           description: ID inválido
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "404":
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
           description: Filme não encontrado
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "500":
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
           description: Erro ao buscar filme
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 
     put:
       summary: Atualizar filme
@@ -307,32 +307,32 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/MovieUpdate"
+              $ref: '#/components/schemas/MovieUpdate'
       responses:
-        "200":
+        '200':
           description: Filme atualizado
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Movie"
-        "400":
+                $ref: '#/components/schemas/Movie'
+        '400':
           description: ID inválido ou dados inválidos
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "404":
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
           description: Filme não encontrado
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "500":
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
           description: Erro ao atualizar filme
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 
     delete:
       summary: Deletar filme
@@ -344,30 +344,30 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Filme deletado
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DeleteSuccess"
-        "400":
+                $ref: '#/components/schemas/DeleteSuccess'
+        '400':
           description: ID inválido
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "404":
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
           description: Filme não encontrado
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "500":
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
           description: Erro ao deletar filme
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 
 components:
   securitySchemes:
@@ -377,7 +377,6 @@ components:
       bearerFormat: JWT
 
   schemas:
-
     UserRegister:
       type: object
       required: [nome, email, senha]
@@ -422,7 +421,7 @@ components:
     UserList:
       type: array
       items:
-        $ref: "#/components/schemas/User"
+        $ref: '#/components/schemas/User'
 
     MovieCreate:
       type: object
@@ -460,7 +459,7 @@ components:
     MovieList:
       type: array
       items:
-        $ref: "#/components/schemas/Movie"
+        $ref: '#/components/schemas/Movie'
 
     AuthSuccess:
       type: object
