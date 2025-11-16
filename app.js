@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const connectDB = require("./src/config/database");
+const authRoutes = require('./src/routes/authRoutes');
 
 connectDB();
 
@@ -19,5 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use('/api/v1', apiRoutes);
+app.use('/api/v1/auth', authRoutes);
+
 
 module.exports = app;

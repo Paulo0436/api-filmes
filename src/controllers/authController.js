@@ -1,23 +1,30 @@
+// src/controllers/authController.js
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
 function generateToken(user) {
-  return jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN || '1d'
-  });
+  return jwt.sign(
+    { id: user._id, email: user.email, nome: user.nome },
+    process.env.JWT_SECRET,
+    { expiresIn: process.env.JWT_EXPIRES_IN || '1d' }
+  );
 }
 
 exports.register = async (req, res, next) => {
   try {
-    const { name, email, password } = req.body;
-    const exists = await User.findOne({ email });
-    if (exists) return res.status(409).json({ message: 'Email já cadastrado' });
+    const { nome, email, senha } = req.body;
 
-    const user = new User({ name, email, password });
+    const existing = await User.findOne({ email });
+    if (existing) return res.status(409).json({ message: 'Email já cadastrado' });
+
+    const user = new User({ nome, email, senha });
     await user.save();
 
     const token = generateToken(user);
-    res.status(201).json({ token, user: { id: user._id, name: user.name, email: user.email } });
+    return res.status(201).json({
+      token,
+      user: { id: user._id, nome: user.nome, email: user.email }
+    });
   } catch (err) {
     next(err);
   }
@@ -25,15 +32,18 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const { email, senha } = req.body;
     const user = await User.findOne({ email });
     if (!user) return res.status(401).json({ message: 'Credenciais inválidas' });
 
-    const isMatch = await user.comparePassword(password);
+    const isMatch = await user.compararSenha(senha);
     if (!isMatch) return res.status(401).json({ message: 'Credenciais inválidas' });
 
     const token = generateToken(user);
-    res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
+    return res.json({
+      token,
+      user: { id: user._id, nome: user.nome, email: user.email }
+    });
   } catch (err) {
     next(err);
   }
