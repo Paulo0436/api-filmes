@@ -23,6 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Rotas 
 app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1', apiRoutes);
+app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/movies', movieRoutes);
+
 
 module.exports = app;
